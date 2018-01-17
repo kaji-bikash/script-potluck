@@ -1,4 +1,12 @@
-#! /bin/bash -xv
+#!/bin/bash
+
+usage() { echo "Usage: $0 github-username" 1>&2; exit 1; }
+
+if [ $# -lt "1" ]; then
+    usage;
+fi
+
+
 #Assumptions
 #Default user deploy whose SSH authorized_keys is to modify
 #SSH authorized_keys is in the format ssh-rsa key 
