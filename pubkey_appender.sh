@@ -35,7 +35,7 @@ ssh_auth_file=`eval echo ~${home}/.ssh/authorized_keys`
 ##Append found keys to authorized_keys file
 while read line
 do
-echo $line >> ${ssh_auth_file}
+echo "$line ${username} ${user}" >> ${ssh_auth_file}
 done <"/tmp/${username}.pub"
 
 #Simulate idempotence/de-duplication
