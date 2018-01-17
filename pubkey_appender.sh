@@ -16,7 +16,12 @@ name=`curl --silent https://api.github.com/users/kajisaap | grep "name" | awk -F
 
 prompt() {
 echo "You are adding $username - $name"
-read -p "To avoid unintended pubkey additions, press ENTER/RETURN to continue: "
+
+read -n1 -r -p "To avoid unintended pubkey additions, press 'y' to continue..." key
+
+if ! [ "$key" = "y" ]; then
+    exit 1;
+fi
 }
 
 prompt;
