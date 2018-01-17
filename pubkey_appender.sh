@@ -12,16 +12,16 @@ fi
 #SSH authorized_keys is in the format ssh-rsa key 
 home=${home:-deploy}
 username=$1
-name=`curl --silent https://api.github.com/users/kajisaap | grep "name" | awk -F: '{ print $2}' | cut -d "," -f1`
+name=`curl --silent https://api.github.com/users/$username | grep "name" | awk -F: '{ print $2}' | cut -d "," -f1`
 
 prompt() {
 echo "You are adding $username - $name"
 
-read -n1 -r -p "To avoid unintended pubkey additions, press 'y' to continue..." key
+read -n1 -r -p "To avoid unintended pubkey additions, press any key to continue..." key
 
-if ! [ "$key" = "y" ]; then
-    exit 1;
-fi
+#if ! [ "$key" = "y" ]; then
+#    exit 1;
+#fi
 }
 
 prompt;
